@@ -1,0 +1,43 @@
+﻿@model ImanolFotia.Models.Cliente
+@{
+    ViewBag.Title = "Modificar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <div class="col">
+                <h2>Modificacion Usuario</h2>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="abm_label">Nombre</div>
+                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control abm" })
+                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="abm_label">Apellido</div>
+                                @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control abm" })
+                                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-4">
+                                <br />
+                                <input type="submit" class="btn btn-success abm_btn" href="#" id="abm_button" value="Modificar" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            }
+            </div>
+    </div>
+</div>
+

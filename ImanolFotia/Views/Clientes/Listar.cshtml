@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Imanol Fotia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container" style="padding-top: 15px;">
+    <div class="col-lg-12">
+        <div class="row row-busqueda">
+            <div class="col-lg-1">
+                <p class="text-left text-busqueda">Filtrar: </p>
+            </div>
+            <div class="col-lg-11">
+                <input id="txtFiltro" type="search" class="form-control abm busqueda" />
+            </div>
+        </div>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr data-bind="foreach: headers">
+                    <th data-bind="click: $parent.sort, text: title"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var c in Model)
+                    {
+                        <tr>
+                            <td>
+                                @c.Id
+                            </td>
+                            <td>
+                                @c.Nombre
+                            </td>
+                            <td>
+                                @c.Apellido
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Modificar", "Modificar", new { id = c.Id }) |
+                                @Html.ActionLink("Borrar", "Baja", new { id = c.Id })
+                            </td>
+                        </tr>
+                    }
+                }
+                else { }
+            </tbody>
+        </table>
+    </div>
+</div>
